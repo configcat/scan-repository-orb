@@ -9,7 +9,7 @@ usage:
     main:
       jobs:
         - configcat/scan:
-            config-id: YOUR_CONFIG_ID
+            config-id: PASTE-YOUR-CONFIG-ID-HERE
             file-url-template: 'https://github.com/my/repo/blob/{branch}/{filePath}#L{lineNumber}' # optional, used to generate links to your repository
             commit-url-template: 'https://github.com/my/repo/commit/{commitHash}' # optional, used to generate links to your repository
             line-count: 3 # optional, context line count before and after the reference line
