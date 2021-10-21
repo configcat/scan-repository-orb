@@ -47,7 +47,7 @@ Every scan execution synchronizes with the active remote branches of your reposi
 | `api-pass`            | ConfigCat Management API basic authentication password.                    | yes        |                     |
 | `config-id`           | ID of the ConfigCat config to scan against.                                | yes        |                     |
 | `file-url-template`   | Template url used to generate VCS file links. Available template parameters: `branch`, `filePath`, `lineNumber`. Example: https://github.com/my/repo/blob/{branch}/{filePath}#L{lineNumber}                           | no         |                     |
-| `commit-url-template` | emplate url used to generate VCS commit links. Available template parameters: `commitHash`. Example: https://github.com/my/repo/commit/{commitHash}                                                               | no         |                     |
+| `commit-url-template` | Template url used to generate VCS commit links. Available template parameters: `commitHash`. Example: https://github.com/my/repo/commit/{commitHash}                                                               | no         |                     |
 | `line-count`          | Context line count before and after the reference line. (min: 1, max: 10)  | no         | 5                   |
 | `sub-folder`          | Sub-folder to scan, relative to the repository root folder.                | no         |                     |
 | `verbose`             | Turns on detailed logging.                                                 | no         | false               |

@@ -4,9 +4,9 @@ description: >
 usage:
   version: 2.1
   orbs:
-    configcat: configcat/scan-repository@1.0.0
+    configcat: configcat/scan-repository@1.1.0
   workflows:
     main:
       jobs:
         - configcat/scan:
-            config-id: YOUR_CONFIG_ID
+            config-id: PASTE-YOUR-CONFIG-ID-HERE # required
