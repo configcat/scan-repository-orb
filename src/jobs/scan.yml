@@ -40,7 +40,8 @@ parameters:
     default: false
 
 steps:
-  - checkout
+  - checkout:
+      path: /repo
   - run:
       name: Scanning repository for references
       command: |
@@ -53,7 +54,7 @@ steps:
           exit 1
         fi
 
-        configcat scan "$CIRCLE_WORKING_DIRECTORY/<< parameters.sub-folder >>" \
+        configcat scan "/repo/<< parameters.sub-folder >>" \
           --config-id=<< parameters.config-id >> \
           --repo=${CIRCLE_PROJECT_REPONAME} \
           --line-count=<< parameters.line-count >> \
