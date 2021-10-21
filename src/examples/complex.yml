@@ -1,0 +1,16 @@
+description: >
+  Executes the scan job with custom parameters.
+
+usage:
+  version: 2.1
+  orbs:
+    configcat: configcat/scan-repository@1.0.0
+  workflows:
+    main:
+      jobs:
+        - configcat/scan:
+            config-id: YOUR_CONFIG_ID
+            file-url-template: 'https://github.com/my/repo/blob/{branch}/{filePath}#L{lineNumber}'
+            commit-url-template: 'https://github.com/my/repo/commit/{commitHash}'
+            line-count: 3
+            verbose: true

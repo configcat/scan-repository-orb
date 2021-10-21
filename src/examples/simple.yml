@@ -1,0 +1,12 @@
+description: >
+  Executes the scan job with default parameters.
+
+usage:
+  version: 2.1
+  orbs:
+    configcat: configcat/scan-repository@1.0.0
+  workflows:
+    main:
+      jobs:
+        - configcat/scan:
+            config-id: YOUR_CONFIG_ID

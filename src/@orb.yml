@@ -1,0 +1,9 @@
+version: 2.1
+
+description: >
+  This Orb's responsibility is to discover ConfigCat feature flag usages in your source
+  code and to upload them to ConfigCat.
+
+display:
+  home_url: https://configcat.com
+  source_url: https://github.com/configcat/cli

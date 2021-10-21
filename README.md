@@ -1,0 +1,1 @@
+# ConfigCat Scan Repository Orb

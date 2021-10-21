@@ -1,0 +1,67 @@
+description: >
+  Find code references to ConfigCat feature flags or settings in your source code.
+
+docker:
+  - image: configcat/cli:1.2.0
+
+parameters:
+  api-host:
+    description: ConfigCat Management API host.
+    default: api.configcat.com
+    type: string
+  api-user:
+    description: ConfigCat Management API basic authentication username.
+    default: CONFIGCAT_API_USER
+    type: env_var_name
+  api-pass:
+    description: ConfigCat Management API basic authentication password.
+    default: CONFIGCAT_API_PASS
+    type: env_var_name
+  config-id:
+    description: ID of the ConfigCat config to scan against.
+    type: string
+  file-url-template:
+    description: 'Template url used to generate VCS file links. Available template parameters: branch, filePath, lineNumber. Example: https://github.com/my/repo/blob/{branch}/{filePath}#L{lineNumber}'
+    type: string
+  commit-url-template:
+    description: 'Template url used to generate VCS commit links. Available template parameters: commitHash. Example: https://github.com/my/repo/commit/{commitHash}'
+    type: string
+  line-count:
+    description: 'Context line count before and after the reference line (min: 1, max: 10)'
+    type: integer
+    default: 5
+  sub-folder:
+    description: Sub-folder to scan, relative to the repository root folder.
+    default: ''
+    type: string
+  verbose:
+    description: Turns on detailed logging.
+    type: boolean
+    default: false
+
+steps:
+  - checkout
+  - run:
+      name: Scanning repository for references
+      command: |
+        if [[ -z "${<< parameters.api-user >>}" ]]; then
+          echo "Please, set the environment variable: '<< parameters.api-user >>'. Will stop now."
+          exit 1
+        fi
+        if [[ -z "${<< parameters.api-pass >>}" ]]; then
+          echo "Please, set the environment variable: '<< parameters.api-pass >>'. Will stop now."
+          exit 1
+        fi
+
+        configcat scan "$CIRCLE_WORKING_DIRECTORY/<< parameters.sub-folder >>" \
+          --config-id=<< parameters.config-id >> \
+          --repo=${CIRCLE_PROJECT_REPONAME} \
+          --line-count=<< parameters.line-count >> \
+          --file-url-template=<< parameters.file-url-template >> \
+          --commit-url-template=<< parameters.commit-url-template >> \
+          --runner="ConfigCat CircleCI Orb v1.0.0" \
+          --upload \
+          $([ "$SCAN_VERBOSE" = "true" ] && printf -- '--verbose')
+      environment:
+        SCAN_VERBOSE: << parameters.verbose >>
+        CONFIGCAT_API_HOST: << parameters.api-host >>
