@@ -62,7 +62,7 @@ steps:
           --commit-url-template="<< parameters.commit-url-template >>" \
           --runner="ConfigCat CircleCI Orb v1.0.0" \
           --upload \
-          $([ "$SCAN_VERBOSE" = "true" ] && printf -- '--verbose')
+          --verbose
       environment:
         SCAN_VERBOSE: << parameters.verbose >>
         CONFIGCAT_API_HOST: << parameters.api-host >>
