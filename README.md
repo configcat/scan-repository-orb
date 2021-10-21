@@ -19,7 +19,7 @@ This [CircleCI Orb](https://circleci.com/docs/2.0/orb-concepts) is a utility tha
     version: 2.1
 
     orbs:
-        configcat: configcat/scan-repository@1.0.0
+      configcat: configcat/scan-repository@1.0.0
 
     workflows:
       main:
