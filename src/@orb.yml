@@ -6,4 +6,4 @@ description: >
 
 display:
   home_url: https://configcat.com
-  source_url: https://github.com/configcat/cli
+  source_url: https://github.com/configcat/scan-repository-orb
