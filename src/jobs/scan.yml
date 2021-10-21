@@ -58,8 +58,8 @@ steps:
           --config-id=<< parameters.config-id >> \
           --repo=${CIRCLE_PROJECT_REPONAME} \
           --line-count=<< parameters.line-count >> \
-          --file-url-template=<< parameters.file-url-template >> \
-          --commit-url-template=<< parameters.commit-url-template >> \
+          --file-url-template="<< parameters.file-url-template >>" \
+          --commit-url-template="<< parameters.commit-url-template >>" \
           --runner="ConfigCat CircleCI Orb v1.0.0" \
           --upload \
           $([ "$SCAN_VERBOSE" = "true" ] && printf -- '--verbose')
