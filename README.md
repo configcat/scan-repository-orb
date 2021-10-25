@@ -21,7 +21,7 @@ For more information about the code references, see our [documentation](https://
     version: 2.1
 
     orbs:
-      configcat: configcat/scan-repository@1.2.0
+      configcat: configcat/scan-repository@1.2.1
 
     workflows:
       main:
