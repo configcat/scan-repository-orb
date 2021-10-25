@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:1.2.1
+  - image: configcat/cli:1.2.2
 
 parameters:
   api-host:

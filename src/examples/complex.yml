@@ -4,7 +4,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    configcat: configcat/scan-repository@1.1.0
+    configcat: configcat/scan-repository@1.2.0
   workflows:
     main:
       jobs:
