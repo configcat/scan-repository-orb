@@ -10,7 +10,7 @@ For more information about the code references, see our [documentation](https://
 
 2. [Get the ID of your ConfigCat Config](https://configcat.com/docs/advanced/code-references/overview#config-id) that you want to associate with your repository. The scanner will use this ID to determine which feature flags & settings to search for in your source code.
 
-3. Create a new CircleCI YAML config in your GitHub repository under the `.circleci` folder, and paste the following content into it.
+3. Create a new CircleCI YAML config in your GitHub repository under the `.circleci` folder, and paste the following content into it. Don't forget to replace the `PASTE-YOUR-CONFIG-ID-HERE` value with your actual Config ID.
     ```yaml
     version: 2.1
 
