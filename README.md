@@ -1,7 +1,7 @@
 # ConfigCat Scan Repository Orb
 This [CircleCI Orb](https://circleci.com/developer/orbs/orb/configcat/scan-repository) is a utility that discovers ConfigCat feature flag & setting usages in your source code and uploads them to [ConfigCat](https://configcat.com).
 
-For more information about the code references, see our [documentation](https://configcat.com/docs/advanced/code-references/overview).
+For more information about repository scanning, see our [documentation](https://configcat.com/docs/advanced/code-references/overview).
 
 ## Configuration
 1. Create a new [ConfigCat Management API credential](https://app.configcat.com/my-account/public-api-credentials) and save its values in [CircleCI Environment Variables](https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project) with the following names: `CONFIGCAT_API_USER`, `CONFIGCAT_API_PASS`.
