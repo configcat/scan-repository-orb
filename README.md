@@ -1,5 +1,5 @@
 # ConfigCat Scan Repository Orb
-This [CircleCI Orb](https://circleci.com/developer/orbs/orb/configcat/scan-repository) is a utility that discovers ConfigCat feature flag & setting usages in your source code and uploads them to [ConfigCat](https://configcat.com).
+This [CircleCI Orb](https://circleci.com/developer/orbs/orb/configcat/scan-repository) is a utility that discovers ConfigCat feature flag & setting usages in your source code and uploads the found code references to [ConfigCat](https://configcat.com).
 
 For more information about repository scanning, see our [documentation](https://configcat.com/docs/advanced/code-references/overview).
 
@@ -29,7 +29,7 @@ For more information about repository scanning, see our [documentation](https://
 4. Commit & push your changes.
 
 The above example configures a workflow that executes the scan and code references upload on every git `push` event.
-The code references will be uploaded for each branch in your repository that triggers the workflow. 
+Scan reports are uploaded for each branch of your repository that triggers the workflow. 
 
 ## Available Options
 
