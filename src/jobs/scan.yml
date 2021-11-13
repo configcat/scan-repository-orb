@@ -62,7 +62,7 @@ steps:
           --line-count=<< parameters.line-count >> \
           --file-url-template="<< parameters.file-url-template >>" \
           --commit-url-template="<< parameters.commit-url-template >>" \
-          --runner="ConfigCat CircleCI Orb v1.3.0" \
+          --runner="ConfigCat CircleCI Orb v1.3.2" \
           --upload \
           --verbose=<< parameters.verbose >> \
           --non-interactive
