@@ -4,13 +4,13 @@ description: >
 usage:
   version: 2.1
   orbs:
-    configcat: configcat/scan-repository@1.2.1
+    configcat: configcat/scan-repository@1.3.0
   workflows:
     main:
       jobs:
         - configcat/scan:
             config-id: PASTE-YOUR-CONFIG-ID-HERE
-            file-url-template: 'https://github.com/my/repo/blob/{branch}/{filePath}#L{lineNumber}' # optional, used to generate links to your repository
+            file-url-template: 'https://github.com/my/repo/blob/{commitHash}/{filePath}#L{lineNumber}' # optional, used to generate links to your repository
             commit-url-template: 'https://github.com/my/repo/commit/{commitHash}' # optional, used to generate links to your repository
             line-count: 3 # optional, context line count before and after the reference line
             verbose: true # optional, turns on detailed logging
