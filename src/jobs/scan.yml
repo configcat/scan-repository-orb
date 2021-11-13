@@ -23,9 +23,11 @@ parameters:
   file-url-template:
     description: 'Template url used to generate VCS file links. Available template parameters: commitHash, filePath, lineNumber. Example: https://github.com/my/repo/blob/{commitHash}/{filePath}#L{lineNumber}'
     type: string
+    default: ''
   commit-url-template:
     description: 'Template url used to generate VCS commit links. Available template parameters: commitHash. Example: https://github.com/my/repo/commit/{commitHash}'
     type: string
+    default: ''
   line-count:
     description: 'Context line count before and after the reference line (min: 1, max: 10)'
     type: integer
