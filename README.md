@@ -15,7 +15,7 @@ For more information about repository scanning, see our [documentation](https://
     version: 2.1
 
     orbs:
-      configcat: configcat/scan-repository@1.3.2
+      configcat: configcat/scan-repository@1.4.0
 
     workflows:
       main:
