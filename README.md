@@ -15,7 +15,7 @@ For more information about repository scanning, see our [documentation](https://
     version: 2.1
 
     orbs:
-      configcat: configcat/scan-repository@1.4.0
+      configcat: configcat/scan-repository@1.5.0
 
     workflows:
       main:
@@ -43,4 +43,5 @@ Scan reports are uploaded for each branch of your repository that triggers the w
 | `commit-url-template` | Template url used to generate VCS commit links. Available template parameters: `commitHash`. Example: https://github.com/my/repo/commit/{commitHash}                                                                                         |            |                     |
 | `line-count`          | Context line count before and after the reference line. (min: 1, max: 10)  |            | 4                   |
 | `sub-folder`          | Sub-folder to scan, relative to the repository root folder.                |            |                     |
+| `exclude-keys`        | List of feature flag keys that must be excluded from the scan report.      |            |                     |
 | `verbose`             | Turns on detailed logging.                                                 |            | false               |

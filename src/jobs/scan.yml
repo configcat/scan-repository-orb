@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:1.6.0
+  - image: configcat/cli:1.6.2
 
 parameters:
   api-host:
@@ -36,6 +36,10 @@ parameters:
     description: Sub-folder to scan, relative to the repository root folder.
     default: ''
     type: string
+  exclude-keys:
+    description: List of feature flag keys that must be excluded from the scan report.
+    default: ''
+    type: string
   verbose:
     description: Turns on detailed logging.
     type: boolean
@@ -56,15 +60,20 @@ steps:
           exit 1
         fi
 
+        EXCLUDE_KEYS=" "
+        [ ! -z "${SCAN_EXCLUDE_KEYS}" ] && EXCLUDE_KEYS=${SCAN_EXCLUDE_KEYS}
+
         configcat scan "/repo/<< parameters.sub-folder >>" \
           --config-id=<< parameters.config-id >> \
           --repo=${CIRCLE_PROJECT_REPONAME} \
           --line-count=<< parameters.line-count >> \
           --file-url-template="<< parameters.file-url-template >>" \
           --commit-url-template="<< parameters.commit-url-template >>" \
-          --runner="ConfigCat CircleCI Orb v1.4.0" \
+          --runner="ConfigCat CircleCI Orb v1.5.0" \
           --upload \
           --verbose=<< parameters.verbose >> \
-          --non-interactive
+          --non-interactive \
+          --exclude-flag-keys ${EXCLUDE_KEYS}
       environment:
         CONFIGCAT_API_HOST: << parameters.api-host >>
+        SCAN_EXCLUDE_KEYS: << parameters.exclude-keys >>
