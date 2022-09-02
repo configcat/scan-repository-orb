@@ -24,6 +24,12 @@ For more information about repository scanning, see our [documentation](https://
               config-id: PASTE-YOUR-CONFIG-ID-HERE # required
               file-url-template: 'https://github.com/your/repo/blob/{commitHash}/{filePath}#L{lineNumber}' # optional, used to generate links to your repository
               commit-url-template: 'https://github.com/your/repo/commit/{commitHash}' # optional, used to generate links to your repository
+              # line-count: 3 # optional, context line count before and after the reference line
+              # sub-folder: 'src' # optional, subfolder to scan, relative to the repository root folder
+              # exclude-keys: > # optional, list of feature flag keys that must be excluded from the scan report
+              #   flag_key_to_exclue_1
+              #   flag_key_to_exclue_2 
+              # verbose: true # optional, turns on detailed logging
     ```
 
 4. Commit & push your changes.
