@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:1.6.2
+  - image: configcat/cli:1.9.2
 
 parameters:
   api-host:
@@ -69,7 +69,7 @@ steps:
           --line-count=<< parameters.line-count >> \
           --file-url-template="<< parameters.file-url-template >>" \
           --commit-url-template="<< parameters.commit-url-template >>" \
-          --runner="ConfigCat CircleCI Orb v1.5.0" \
+          --runner="ConfigCat CircleCI Orb v1.7.0" \
           --upload \
           --verbose=<< parameters.verbose >> \
           --non-interactive \
