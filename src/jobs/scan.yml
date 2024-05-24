@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:1.9.2
+  - image: configcat/cli:2.1.0
 
 parameters:
   api-host:
@@ -40,6 +40,10 @@ parameters:
     description: List of feature flag keys that must be excluded from the scan report.
     default: ''
     type: string
+  alias-patterns:
+    description: 'Comma delimited list of custom regex patterns used to search for additional aliases.'
+    default: ''
+    type: string
   verbose:
     description: Turns on detailed logging.
     type: boolean
@@ -51,6 +55,8 @@ steps:
   - run:
       name: Scanning repository for references
       command: |
+        apk add openssh-client
+
         if [[ -z "${<< parameters.api-user >>}" ]]; then
           echo "Please, set the environment variable: '<< parameters.api-user >>'. Will stop now."
           exit 1
@@ -69,7 +75,7 @@ steps:
           --line-count=<< parameters.line-count >> \
           --file-url-template="<< parameters.file-url-template >>" \
           --commit-url-template="<< parameters.commit-url-template >>" \
-          --runner="ConfigCat CircleCI Orb v1.7.0" \
+          --runner="ConfigCat CircleCI Orb v1.8.0" \
           --upload \
           --verbose=<< parameters.verbose >> \
           --non-interactive \
@@ -77,3 +83,4 @@ steps:
       environment:
         CONFIGCAT_API_HOST: << parameters.api-host >>
         SCAN_EXCLUDE_KEYS: << parameters.exclude-keys >>
+        CONFIGCAT_ALIAS_PATTERNS: << parameters.alias-patterns >>

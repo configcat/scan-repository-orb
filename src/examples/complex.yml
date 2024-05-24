@@ -4,7 +4,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    configcat: configcat/scan-repository@1.7.0
+    configcat: configcat/scan-repository@1.8.0
   workflows:
     main:
       jobs:
@@ -16,5 +16,6 @@ usage:
             sub-folder: 'src' # optional, subfolder to scan, relative to the repository root folder
             exclude-keys: > # optional, list of feature flag keys that must be excluded from the scan report
               flag_key_to_exclue_1
-              flag_key_to_exclue_2 
+              flag_key_to_exclue_2
+            alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) # optional, comma delimited list of custom regex patterns used to search for additional aliases
             verbose: true # optional, turns on detailed logging
