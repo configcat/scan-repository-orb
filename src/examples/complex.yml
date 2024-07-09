@@ -4,12 +4,12 @@ description: >
 usage:
   version: 2.1
   orbs:
-    configcat: configcat/scan-repository@1.8.0
+    configcat: configcat/scan-repository@1.9.0
   workflows:
     main:
       jobs:
         - configcat/scan:
-            config-id: PASTE-YOUR-CONFIG-ID-HERE
+            config-id: PASTE-YOUR-CONFIG-ID-HERE # required
             file-url-template: 'https://github.com/my/repo/blob/{commitHash}/{filePath}#L{lineNumber}' # optional, used to generate links to your repository
             commit-url-template: 'https://github.com/my/repo/commit/{commitHash}' # optional, used to generate links to your repository
             line-count: 3 # optional, context line count before and after the reference line
@@ -18,4 +18,5 @@ usage:
               flag_key_to_exclue_1
               flag_key_to_exclue_2
             alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) # optional, comma delimited list of custom regex patterns used to search for additional aliases
+            usage-patterns: feature_flags\.enabled\(:CC_KEY\)   # optional, comma delimited flag key usage patterns
             verbose: true # optional, turns on detailed logging

@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:2.1.0
+  - image: configcat/cli:2.2.2
 
 parameters:
   api-host:
@@ -44,6 +44,10 @@ parameters:
     description: 'Comma delimited list of custom regex patterns used to search for additional aliases.'
     default: ''
     type: string
+  usage-patterns:
+    description: 'Comma delimited list of custom regex patterns that describe additional feature flag key usages.'
+    default: ''
+    type: string
   verbose:
     description: Turns on detailed logging.
     type: boolean
@@ -75,7 +79,7 @@ steps:
           --line-count=<< parameters.line-count >> \
           --file-url-template="<< parameters.file-url-template >>" \
           --commit-url-template="<< parameters.commit-url-template >>" \
-          --runner="ConfigCat CircleCI Orb v1.8.0" \
+          --runner="ConfigCat CircleCI Orb v1.9.0" \
           --upload \
           --verbose=<< parameters.verbose >> \
           --non-interactive \
@@ -84,3 +88,4 @@ steps:
         CONFIGCAT_API_HOST: << parameters.api-host >>
         SCAN_EXCLUDE_KEYS: << parameters.exclude-keys >>
         CONFIGCAT_ALIAS_PATTERNS: << parameters.alias-patterns >>
+        CONFIGCAT_USAGE_PATTERNS: << parameters.usage-patterns >>

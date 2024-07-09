@@ -15,7 +15,7 @@ For more information about repository scanning, see our [documentation](https://
     version: 2.1
 
     orbs:
-      configcat: configcat/scan-repository@1.7.0
+      configcat: configcat/scan-repository@1.9.0
 
     workflows:
       main:
@@ -30,6 +30,7 @@ For more information about repository scanning, see our [documentation](https://
               #   flag_key_to_exclue_1
               #   flag_key_to_exclue_2 
               # alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) # optional
+              # usage-patterns: feature_flags\.enabled\(:CC_KEY\)   # optional
               # verbose: true           # optional
     ```
 
@@ -52,4 +53,5 @@ Scan reports are uploaded for each branch of your repository that triggers the w
 | `sub-folder`          | Sub-folder to scan, relative to the repository root folder.                |            |                     |
 | `exclude-keys`        | List of feature flag keys that must be excluded from the scan report.      |            |                     |
 | `alias-patterns`      | Comma delimited list of custom regex patterns used to search for additional aliases. |  |                     |
+| `usage-patterns`      | Comma delimited list of custom regex patterns that describe additional feature flag key usages. |  |          |
 | `verbose`             | Turns on detailed logging.                                                 |            | false               |
