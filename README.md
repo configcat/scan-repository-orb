@@ -25,6 +25,7 @@ For more information about repository scanning, see our [documentation](https://
               file-url-template: 'https://github.com/your/repo/blob/{commitHash}/{filePath}#L{lineNumber}' # optional
               commit-url-template: 'https://github.com/your/repo/commit/{commitHash}' # optional
               # line-count: 3           # optional
+              # timeout: 2000           # optional
               # sub-folder: 'src'       # optional
               # exclude-keys: >         # optional
               #   flag_key_to_exclue_1
@@ -50,6 +51,7 @@ Scan reports are uploaded for each branch of your repository that triggers the w
 | `file-url-template`   | Template url used to generate VCS file links. Available template parameters: `commitHash`, `filePath`, `lineNumber`. Example: https://github.com/my/repo/blob/{commitHash}/{filePath}#L{lineNumber}                                                                    |            |                     |
 | `commit-url-template` | Template url used to generate VCS commit links. Available template parameters: `commitHash`. Example: https://github.com/my/repo/commit/{commitHash}                                                                                         |            |                     |
 | `line-count`          | Context line count before and after the reference line. (min: 1, max: 10)  |            | 4                   |
+| `timeout`             | Scan timeout in seconds (default: 1800, min: 60)                           |            | 1800                |
 | `sub-folder`          | Sub-folder to scan, relative to the repository root folder.                |            |                     |
 | `exclude-keys`        | List of feature flag keys that must be excluded from the scan report.      |            |                     |
 | `alias-patterns`      | Comma delimited list of custom regex patterns used to search for additional aliases. |  |                     |

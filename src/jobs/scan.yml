@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:2.4.0
+  - image: configcat/cli:2.4.2
 
 parameters:
   api-host:
@@ -32,6 +32,10 @@ parameters:
     description: 'Context line count before and after the reference line (min: 1, max: 10)'
     type: integer
     default: 4
+  timeout:
+    default: 1800
+    description: 'Scan timeout in seconds (default: 1800, min: 60)'
+    type: integer
   sub-folder:
     description: Sub-folder to scan, relative to the repository root folder.
     default: ''
@@ -77,6 +81,7 @@ steps:
           --config-id=<< parameters.config-id >> \
           --repo=${CIRCLE_PROJECT_REPONAME} \
           --line-count=<< parameters.line-count >> \
+          --timeout=<< parameters.timeout >> \
           --file-url-template="<< parameters.file-url-template >>" \
           --commit-url-template="<< parameters.commit-url-template >>" \
           --runner="ConfigCat CircleCI Orb v1.11.0" \
