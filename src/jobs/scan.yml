@@ -2,7 +2,7 @@ description: >
   Find code references to ConfigCat feature flags or settings in your source code.
 
 docker:
-  - image: configcat/cli:2.4.2
+  - image: configcat/cli:2.7.0
 
 parameters:
   api-host:
@@ -52,6 +52,10 @@ parameters:
     description: 'Comma delimited list of custom regex patterns that describe additional feature flag key usages.'
     default: ''
     type: string
+  fail-on-deleted-flag-found:
+    description: 'Fail the scan if a deleted feature flag is found.'
+    default: false
+    type: boolean
   verbose:
     description: Turns on detailed logging.
     type: boolean
@@ -88,9 +92,11 @@ steps:
           --upload \
           --verbose=<< parameters.verbose >> \
           --non-interactive \
-          --exclude-flag-keys ${EXCLUDE_KEYS}
+          --exclude-flag-keys ${EXCLUDE_KEYS} \
+          --fail-on-deleted-flag-found=<< parameters.fail-on-deleted-flag-found >>
       environment:
         CONFIGCAT_API_HOST: << parameters.api-host >>
         SCAN_EXCLUDE_KEYS: << parameters.exclude-keys >>
         CONFIGCAT_ALIAS_PATTERNS: << parameters.alias-patterns >>
         CONFIGCAT_USAGE_PATTERNS: << parameters.usage-patterns >>
+        SCAN_FAIL_ON_DELETED_FLAG_FOUND: << parameters.fail-on-deleted-flag-found >>

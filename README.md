@@ -15,7 +15,7 @@ For more information about repository scanning, see our [documentation](https://
     version: 2.1
 
     orbs:
-      configcat: configcat/scan-repository@1.10.1
+      configcat: configcat/scan-repository@1.12.0
 
     workflows:
       main:
@@ -32,7 +32,8 @@ For more information about repository scanning, see our [documentation](https://
               #   flag_key_to_exclue_2 
               # alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) # optional
               # usage-patterns: feature_flags\.enabled\(:CC_KEY\)   # optional
-              # verbose: true           # optional
+              # fail-on-deleted-flag-found: true                    # optional
+              # verbose: true                                       # optional
     ```
 
 4. Commit & push your changes.
@@ -56,4 +57,5 @@ Scan reports are uploaded for each branch of your repository that triggers the w
 | `exclude-keys`        | List of feature flag keys that must be excluded from the scan report.      |            |                     |
 | `alias-patterns`      | Comma delimited list of custom regex patterns used to search for additional aliases. |  |                     |
 | `usage-patterns`      | Comma delimited list of custom regex patterns that describe additional feature flag key usages. |  |          |
+| `fail-on-deleted-flag-found` | Fail the scan if a deleted feature flag is found. (Requires the `View product level audit logs` ConfigCat permission) |     | false |
 | `verbose`             | Turns on detailed logging.                                                 |            | false               |
