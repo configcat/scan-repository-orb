@@ -4,7 +4,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    configcat: configcat/scan-repository@1.11.1
+    configcat: configcat/scan-repository@1.12.0
   workflows:
     main:
       jobs:
@@ -20,4 +20,5 @@ usage:
               flag_key_to_exclue_2
             alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) # optional, comma delimited list of custom regex patterns used to search for additional aliases
             usage-patterns: feature_flags\.enabled\(:CC_KEY\)   # optional, comma delimited flag key usage patterns
+            fail-on-deleted-flag-found: true # optional, fail the scan if a deleted feature flag is found
             verbose: true # optional, turns on detailed logging
